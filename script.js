@@ -1,3 +1,51 @@
+const ACCESS_CODE = "Mavic4";
+const accessForm = document.getElementById("access-form");
+const accessInput = document.getElementById("access-code");
+const accessError = document.getElementById("access-error");
+const accessGate = document.getElementById("access-gate");
+const ACCESS_STORAGE_KEY = "lukas-site-access";
+
+const hasStoredAccess = () => {
+  try {
+    return sessionStorage.getItem(ACCESS_STORAGE_KEY) === "granted";
+  } catch {
+    return false;
+  }
+};
+
+const storeAccess = () => {
+  try {
+    sessionStorage.setItem(ACCESS_STORAGE_KEY, "granted");
+  } catch {
+    return;
+  }
+};
+
+const unlockSite = () => {
+  document.body.classList.remove("auth-locked");
+  accessGate?.setAttribute("aria-hidden", "true");
+};
+
+if (hasStoredAccess()) {
+  unlockSite();
+} else {
+  accessInput?.focus();
+}
+
+accessForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (accessInput.value === ACCESS_CODE) {
+    storeAccess();
+    unlockSite();
+    return;
+  }
+
+  accessError.textContent = "Clave incorrecta. Intentalo nuevamente.";
+  accessInput.value = "";
+  accessInput.focus();
+});
+
 const images = document.querySelectorAll("img[data-fallback]");
 
 images.forEach((image) => {

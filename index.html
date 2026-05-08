@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="auth-locked">
     <header class="site-header" aria-label="Navegacion principal">
       <a class="brand" href="#inicio">Lukas Perez</a>
       <nav class="nav-links" aria-label="Secciones">
@@ -216,6 +216,31 @@
       <p>© <span id="year"></span> Lukas Perez</p>
       <a href="#inicio">Volver arriba</a>
     </footer>
+
+    <section class="access-gate" id="access-gate" aria-labelledby="access-title">
+      <form class="access-panel" id="access-form" autocomplete="off">
+        <p class="eyebrow">Acceso privado</p>
+        <h2 id="access-title">Sitio en construccion</h2>
+        <p class="access-copy">
+          Ingresa la clave para ver la web completa mientras esta version sigue
+          en desarrollo.
+        </p>
+        <label class="access-label" for="access-code">Clave</label>
+        <div class="access-row">
+          <input
+            id="access-code"
+            name="access-code"
+            type="password"
+            inputmode="text"
+            autocomplete="off"
+            aria-describedby="access-error"
+            required
+          />
+          <button class="button primary" type="submit">Entrar</button>
+        </div>
+        <p class="access-error" id="access-error" role="alert"></p>
+      </form>
+    </section>
 
     <script src="script.js"></script>
   </body>
