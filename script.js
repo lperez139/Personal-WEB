@@ -3,7 +3,7 @@ const accessForm = document.getElementById("access-form");
 const accessInput = document.getElementById("access-code");
 const accessError = document.getElementById("access-error");
 const accessGate = document.getElementById("access-gate");
-const ACCESS_STORAGE_KEY = "lukas-site-access";
+const ACCESS_STORAGE_KEY = "lukas-site-access-v2";
 
 const hasStoredAccess = () => {
   try {
